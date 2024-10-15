@@ -36,12 +36,9 @@ int insertElement(int arr[], int size, int capacity, int element, int pos) {
     // Shift elements to the right
     for (int i = size; i > pos; i--) {
         arr[i] = arr[i - 1];
-        if( i = pos){   
-            cout << "Here i am" <<endl;
-        }
     }
 
-    
+    arr[pos] = element;
     return size + 1;
 
 }
@@ -70,6 +67,19 @@ void updateElement(int arr[], int size, int pos, int newElement) {
     arr[pos] = newElement;
 }
 
+void bubbleSort(int arr[], int size) {
+    for( int i = 0; i < size-1; i++){
+        for(int j=0; j < size-i-1; j++){
+            if(arr[j] > arr[j+1]){
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+    traverseArray(arr, size);
+}
+
 int main() {
     const int capacity = 100;  // Maximum capacity of the array
     int arr[capacity] = {}; // Initialize the array
@@ -85,9 +95,9 @@ int main() {
     }
 
     cout <<endl;
-    cout << "1: Traverse\n2: Search\n3: Insert\n4: Delete\n5: Update\n" <<endl;
+    cout << "1: Traverse\n2: Search\n3: Insert\n4: Delete\n5: Update\n6: Bubble sort\n" <<endl;
 
-    cout << "Chose the operation for the Array";
+    cout << "Chose the operation for the Array: ";
     cin >> choice;
 
     
@@ -124,7 +134,9 @@ int main() {
         cin >> pos;
         updateElement(arr,size,pos,newElement);
         traverseArray(arr,size);
-    } else {
+    } else if(choice == 6){
+        bubbleSort(arr, size);
+    }else {
         cout << "Invalid Operation";
     }
 
