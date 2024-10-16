@@ -1,67 +1,96 @@
 body {
-    background: linear-gradient(to left, #0e2f5f, #3e465b);
-    width: 100%;
+    background: linear-gradient(to left, #0e2f5f, #0d1323);
     margin: 0;
+}
+
+.top-sec{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 200px;
 }
 
 .header{
-    width: 50vw;
-    height: 70px;
+    width: 40vw;
+    height: 100px;
     margin: 0;
-    display: flex;
-    justify-content: space-around;
+    display: inline-block;
+    background-color: white;
+    position: relative;
+    left: 30px;
+    top: 20px;
+    border-radius: 40px;
+    opacity: 0.7;
 }
 
-.tabs, a {
+a {
     color: hsl(332, 85%, 48%);
     font-family: 'Times New Roman', Times, serif;
     font-size: 25px;
-    margin-top: 20px;
+    margin-left: 30PX;
+    position: relative;
+    top: 30px;
+    left: 60px;
 }
 
-.main{
-    color: #01c8ee;
-    margin: 30px;
-    height: 600px;  
-    margin-top: 90px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.pro-sec{
+    height: 500px;
+    width: 70vh;
+    padding-left: 100px;
+    border-bottom-right-radius: 350px;
+    border-bottom-left-radius: 350px;
+    display: inline-block;
+    background-color: rgb(85, 87, 87);
+    color: rgb(1, 209, 250);
 }
 
-.main-pic{
-    height: 590px;
-    border-radius: 100px;
-    border-bottom-left-radius: 10px;
-    margin-left: 50px;
+.pro-pic {
+    height: 300px;
+    border-bottom-left-radius: 150px;
+    border-bottom-right-radius: 150px;
+    margin-left: 70px;
 }
-
-.main-content{
-    margin-left: 170px;
-}
-
 
 #first-name{
     font-size: 20px;
-    margin-left: 90px;
+    margin-left: 160px;
     margin-top: 30px;
 }
 
 
 span{
     font-size: 50px;
+    margin-left: 100px;
     display: block;
 }
 
-.pro-pic {
-    height: 260px;
-    border-radius: 120px;
-    margin-left: 40px;
+.main{
+    margin: 30px;
+    width: 40vw;
+    margin-top: 90px;
+    display: inline-block;
+    color: white;
+    position: relative;
+    bottom: 380px;
+} 
+
+
+#me{
+    font-size: 30px;
 }
 
+.main-content{
+    margin-left: 170px;
+    background-color: white;
+    position: relative;
+    top: 0px;
+}
+
+
+
 .media-links{
+    color:hsl(332, 85%, 48%);
     font-size: 30PX;
     position: relative;
-    left: 600px;
-    bottom: 90px;
-    height: 100px;
+    bottom: 300px;
+    left: 100px;
 }
