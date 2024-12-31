@@ -1,7 +1,7 @@
-let boardArr = ['','','','','','','','',''];           //create an array of the board so as to assing index in js
+let boardArr = ['','','','','','','','',''];                    //create an array of the board so as to assing index in js
 const board = document.getElementById('board');                 //sets the element with id board to a var board so as to help in appending the div
 
-boardArr.forEach((arr, index) => {                             //loops throught the board arr generating the divs
+boardArr.forEach((arr, index) => {                              //loops throught the board arr generating the divs
     const div = document.createElement('div');
     div.textContent = arr;
     div.setAttribute('data-index', index);
