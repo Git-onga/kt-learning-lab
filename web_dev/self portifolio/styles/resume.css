@@ -14,11 +14,11 @@ body {
     width: 40vw;
     height: 100px;
     display: inline-block;
-    background-color: white;
+    background-color: rgb(164, 167, 167);
     position: relative;
-    left: 30px;
     top: 20px;
-    border-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
     opacity: 0.7;
 }
 
@@ -69,15 +69,14 @@ a {
 
 .main{
     color: #01c8ee;
-    margin: 30px; 
+    width: 64%;
     font-size: 40px;
     column-gap: 50px;
 }
 
 .left-sec{
-    margin: 100px;
-    margin-left: 20px;
-    background: white;
+    padding-left: 5%;
+    background: rgb(117, 119, 119);
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
     opacity: 0.7;
