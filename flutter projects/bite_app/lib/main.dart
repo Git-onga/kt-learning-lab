@@ -139,11 +139,75 @@ class HomeScreen extends StatelessWidget {
                 ))
             ],
           ),
-          FloatingActionButton(
-            onPressed: () {
-            }
+          Positioned(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                FloatingActionButton.extended(
+                  onPressed: () {
+                  },
+                  label: Text(
+                    'Fast Food',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  backgroundColor: Color.fromARGB(255, 125, 14, 6),
+                ),
+                FloatingActionButton.extended(
+                  onPressed: () {
+                  },
+                  label: Text(
+                    'Main Meals',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  backgroundColor: Color.fromARGB(255, 125, 14, 6),
+                ),
+                FloatingActionButton.extended(
+                  onPressed: () {
+                  },
+                  label: Text(
+                    'Vegiterian',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  backgroundColor: Color.fromARGB(255, 125, 14, 6),
+                ),
+                FloatingActionButton.extended(
+                  onPressed: () {
+                  },
+                  label: Text(
+                    'Drinks',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  backgroundColor: Color.fromARGB(255, 125, 14, 6),
+                )
+              ],
+            ),
           ),
-        ],
+         Positioned(
+          width: double.infinity,
+          
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                height: 200,
+                margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                decoration: BoxDecoration(
+                  color: Colors.amber,  
+                ),
+                child: Image.asset('assets/images/Burgers.jpeg'),
+              ),
+              Container(
+                height: 200,
+                padding: EdgeInsets.all(10),
+                margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                child: Image.asset('assets/images/Baked Potato Slices.jpeg'),
+              ),
+
+            ]
+          ),
+        )
+      ],
+        
       ),
       bottomNavigationBar: NavigationBar(
         destinations:  [
