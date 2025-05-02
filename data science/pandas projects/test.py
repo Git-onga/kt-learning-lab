@@ -1,80 +1,64 @@
-import pandas
+import numpy as np
+import pandas as pd
 
-# Make a dictionary of data for boot sizes
-# and harness sizes in cm
-data = {
-    'boot_size' : [ 39, 38, 37, 39, 38, 35, 37, 36, 35, 40, 
-                    40, 36, 38, 39, 42, 42, 36, 36, 35, 41, 
-                    42, 38, 37, 35, 40, 36, 35, 39, 41, 37, 
-                    35, 41, 39, 41, 42, 42, 36, 37, 37, 39,
-                    42, 35, 36, 41, 41, 41, 39, 39, 35, 39
- ],
-    'harness_size': [ 58, 58, 52, 58, 57, 52, 55, 53, 49, 54,
-                59, 56, 53, 58, 57, 58, 56, 51, 50, 59,
-                59, 59, 55, 50, 55, 52, 53, 54, 61, 56,
-                55, 60, 57, 56, 61, 58, 53, 57, 57, 55,
-                60, 51, 52, 56, 55, 57, 58, 57, 51, 59
-                ]
-}
+grades = [50,50,47,97,49,3,53,42,26,74,82,62,37,15,70,27,36,35,48,52,63,64]
 
-# Convert it into a table using pandas
-dataset = pandas.DataFrame(data)
+# Define an array of study hours
+study_hours = [10.0,11.5,9.0,16.0,9.25,1.0,11.5,9.0,8.5,14.5,15.5,
+                13.75,9.0,8.0,15.5,8.0,9.0,6.0,10.0,12.0,12.5,12.0]
 
-# Print the data
-# print(dataset)
+# Create a 2D array (an array of arrays)
+student_data = np.array([study_hours, grades])
 
-#===========================================
+# display the array
+# print(student_data.shape)
 
-# Load a library to do the hard work for us
-import statsmodels.formula.api as smf
+# Get the mean value of each sub-array
+avg_study = student_data[0].mean()
+avg_grade = student_data[1].mean()
 
-# This says that boot_size is explained by harness_size
-formula = "boot_size ~ harness_size"
+# print('Average study hours: {:.2f}\nAverage grade: {:.2f}'.format(avg_study, avg_grade))
 
-# Note that we have created our model but it does not 
-# have internal parameters set yet
-# First, we define our formula using a special syntax
-# Create the model, but don't train it yet
-model = smf.ols(formula = formula, data = dataset)
+# DataFrame is a convinient structure to work with mulitiple dimensional array
+df_students = pd.DataFrame({'Name': ['Dan', 'Joann', 'Pedro', 'Rosie', 'Ethan', 'Vicky', 'Frederic', 'Jimmie', 
+                                    'Rhonda', 'Giovanni', 'Francesca', 'Rajab', 'Naiyana', 'Kian', 'Jenny',
+                                    'Jakeem','Helena','Ismat','Anila','Skye','Daniel','Aisha'],
 
-if not hasattr(model, 'params'):
-    print("Model selected but it does not have parameters set. We need to train it!")
+                            'StudyHours':student_data[0],
+                            'Grade':student_data[1]
+})
 
-#===========================================
+# Get the rows with index values from 0 to 5
+# print(df_students.loc[0:5])
 
-# Train (fit) the model so that it creates a line that 
-# fits our data. This method does the hard work for
-# us. We will look at how this method works in a later unit.
-fitted_model = model.fit()
+# Get data in the first five rows
+# print(df_students.query('Name=="Aisha"'))
 
-# Print information about our model now it has been fit
-print("The following model parameters have been found:\n" +
-    f"Line slope: {fitted_model.params[1]}\n"+ f"Line Intercept: {fitted_model.params[0]}")
+# Get the mean study hours using to column name as an index
+mean_study = df_students['StudyHours'].mean()
 
-#===========================================
+# Get the mean grade using the column name as a property (just to make the point!)
+mean_grade = df_students.Grade.mean()
 
-import matplotlib.pyplot as plt
+# Print the mean study hours and mean grade
+print('Average weekly study hours: {:.2f}\nAverage grade: {:.2f}'.format(mean_study, mean_grade))
 
-# Show a scatter plot of the data points and add the fitted line
-# Don't worry about how this works for now
-plt.scatter(dataset["harness_size"], dataset["boot_size"])
-plt.plot(dataset["harness_size"], fitted_model.params[1] * dataset["harness_size"] + fitted_model.params[0], 'r', label='Fitted line')
-# add labels and legend
-plt.xlabel("harness_size")
-plt.ylabel("boot_size")
-plt.legend()
+# Get students who studied for the mean or more hours
+print(df_students[df_students.StudyHours > mean_study])
 
-# show graph
-# plt.show()
+# What was their mean grade?
+print(df_students[df_students.StudyHours > mean_study].Grade.mean())
 
-#===========================================
-    
-# harness_size states the size of the harness we are interested in
-harness_size = { 'harness_size' : [45] }
+passes = pd.Series(df_students['Grade'] >= 60)
+df_students = pd.concat([df_students, passes.rename("Pass")], axis=1)
 
-# Use the model to predict what size of boots the dog will fit
-approximate_boot_size = fitted_model.predict(harness_size)
+# print(df_students)
+print(df_students.groupby(df_students.Pass).Name.count())
 
-# Print the result
-print("\nEstimated approximate_boot_size:")
-print(approximate_boot_size[0])
+print(df_students.groupby(df_students.Pass)[['StudyHours', 'Grade']].mean())
+
+# Create a DataFrame with the data sorted by Grade (descending)
+df_students = df_students.sort_values('Grade', ascending=False)
+
+# Show the DataFrame
+print(df_students)
