@@ -1,9 +1,27 @@
-# PLP Course Work 📘
+## 🚀Week 1 Assignments
 
-This repository contains all my current and future assignments while enrolled in the **Power Learn Project (PLP)** program. 
-It is organized by module and topic for easy navigation and reference.
+Creating a basic calculator program in python🐍
 
-## 🚀 About the Course
+## ➡️ Features
 
-**Power Learn Project (PLP)** is a Pan-African digital skilling initiative focused on equipping young people with market-relevant tech skills.
-This repo serves as my personal tracker and portfolio for assignments, exercises, and projects throughout the course.
+- Prompts the user to enter:
+  - Two numbers
+  - The operation to perform
+- Performs one of the four basic arithmetic operations:
+  - Addition (`+`)
+  - Subtraction (`-`)
+  - Multiplication (`*`)
+  - Division (`/`)
+- Outputs the result
+
+---
+
+## 🔢 Logical Steps of the Program
+
+1. Prompt the user to enter the first number.
+2. Prompt the user to enter the second number.
+3. Prompt the user to enter the desired operation (`+`, `-`, `*`, or `/`).
+4. Calls the calculate function.
+5. The function checks the the user's desired operation and perfoms the arithmetic calculation.
+6. If the user's operation is in valid it outputs the "Error: Invalid Operator" message.
+7. Outputs the results.
